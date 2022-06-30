@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabMVCTesting", "LabMVCTest
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConversorJson", "ConversorJson\ConversorJson.csproj", "{7EDE9C29-4AF1-405E-A4DA-96B871DDF01D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConversorJsonTest", "ConversorJsonTest\ConversorJsonTest.csproj", "{FAA107D7-2A84-45E9-91AC-44AA5B4D2E12}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{7EDE9C29-4AF1-405E-A4DA-96B871DDF01D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7EDE9C29-4AF1-405E-A4DA-96B871DDF01D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7EDE9C29-4AF1-405E-A4DA-96B871DDF01D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FAA107D7-2A84-45E9-91AC-44AA5B4D2E12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FAA107D7-2A84-45E9-91AC-44AA5B4D2E12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAA107D7-2A84-45E9-91AC-44AA5B4D2E12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAA107D7-2A84-45E9-91AC-44AA5B4D2E12}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
