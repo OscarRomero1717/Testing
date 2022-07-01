@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ConversorJson\ConversorJson.csproj" />
+    <ProjectReference Include="..\LabMVCTesting\LabMVCTesting.csproj" />
   </ItemGroup>
 
 </Project>

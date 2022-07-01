@@ -12,45 +12,18 @@ namespace ConversorJson
 {
     public class Conversor
     {
-
-        public string ConvertJson (string jsonToConvert) 
+        private IConversorJson _conversorJson;
+        public Conversor(IConversorJson conversorJson) 
         {
-            if (IsValidJson(jsonToConvert))
-            {
-                XNode node = JsonConvert.DeserializeXNode(jsonToConvert, "root");
-                return node.ToString();
-            }
-            return null;
-            
+            _conversorJson = conversorJson;
+        }
+        public string ConvertJson (string jsonConvert) 
+        {
+           return _conversorJson.ConvertJsonInterface(jsonConvert);
         }
 
 
 
-        private static bool IsValidJson(string strInput)
-        {
-            if (string.IsNullOrWhiteSpace(strInput)) { return false; }
-            strInput = strInput.Trim();
-            if ((strInput.StartsWith("{") && strInput.EndsWith("}")) || //For object
-                (strInput.StartsWith("[") && strInput.EndsWith("]"))) //For array
-            {
-                try
-                {
-                    var obj = JToken.Parse(strInput);
-                    return true;
-                }
-                catch (JsonReaderException jex)
-                {
-                    throw;
-                }
-                catch (Exception ex) //some other exception
-                {
-                    throw;
-                }
-            }
-            else
-            {
-                return false;
-            }
-        }
+       
     }
 }

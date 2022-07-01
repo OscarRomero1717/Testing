@@ -1,5 +1,4 @@
 ﻿using ConversorJson;
-using Moq;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using System;
@@ -10,26 +9,13 @@ using System.Threading.Tasks;
 
 namespace ConversorJsonTest
 {
-
-    public class ConversorTest
+    public class ConversorJsonImplementationTest
     {
-
-        public Mock<IConversorJson> ConversorJsonMock { get; set; }
-
-
-        [SetUp ]
-        public void SetUP() 
-        {
-            ConversorJsonMock = new Mock<IConversorJson>();
-
-        }
-
         [Test]
-        public void  Given_Recived_a_Json_Valid_When_Conversor_call_then_a_xml_valid() 
+        public void Given_Recived_a_Json_Valid_When_Conversor_call_then_a_xml_valid()
         {
             ///arrange
-            ///
-
+            ConversorJsonImplementation jsonConversor = new ConversorJsonImplementation();
             string json = @"{
    ""ClientId"":3,
    ""Payment"":1,
@@ -46,7 +32,6 @@ namespace ConversorJsonTest
        }
    ]
 }";
-
             string responseExpected = @"<root>
   <ClientId>3</ClientId>
   <Payment>1</Payment>
@@ -61,16 +46,9 @@ namespace ConversorJsonTest
     <UnitPrice>180</UnitPrice>
   </Items>
 </root>";
-
-            ConversorJsonMock.Setup(x=> x.ConvertJsonInterface(json)).Returns(responseExpected);
-
-
-            Conversor jsonConversor = new Conversor(ConversorJsonMock.Object);
-          
-          
             //act
 
-             string xmlResponse= jsonConversor.ConvertJson(json);
+            string xmlResponse = jsonConversor.ConvertJsonInterface(json);
 
             //assert
             Assert.AreEqual(responseExpected, xmlResponse);
@@ -80,11 +58,10 @@ namespace ConversorJsonTest
 
 
         [Test]
-        public void Given_Recived_a_Json_InValid_When_Conversor_call_then_Return_ExceptionJson()
+        public void Given_Recived_a_Json_InValid_When_Conversor_call_then_Retunr_ExceptionJson()
         {
             ///arrange
-            
-             
+            ConversorJsonImplementation jsonConversor = new ConversorJsonImplementation();
             string json = @"{
    ""ClientId"":3,
    ""Payment"":1,
@@ -101,15 +78,13 @@ namespace ConversorJsonTest
        }
    ]
 }";
-            ConversorJsonMock.Setup(x => x.ConvertJsonInterface(json)).Throws<JsonReaderException>();
-            Conversor jsonConversor = new Conversor(ConversorJsonMock.Object);
 
             //act
 
 
 
             //assert
-            Assert.Throws<JsonReaderException>(()=> jsonConversor.ConvertJson(json));
+            Assert.Throws<JsonReaderException>(() => jsonConversor.ConvertJsonInterface(json));
 
 
         }
@@ -119,19 +94,17 @@ namespace ConversorJsonTest
         public void Given_Recived_a_Json_Null_When_Conversor_call_then_Return_null()
         {
             ///arrange
-            ConversorJsonMock.Setup(x => x.ConvertJsonInterface(default)).Returns((string)null);
-            Conversor jsonConversor = new Conversor(ConversorJsonMock.Object);
+            ConversorJsonImplementation jsonConversor = new ConversorJsonImplementation();
             string json = null;
 
             //act
 
-            string response= jsonConversor.ConvertJson(json);
+            string response = jsonConversor.ConvertJsonInterface(json);
 
             //assert
             Assert.IsNull(response);
 
 
         }
-
     }
 }
